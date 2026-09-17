@@ -1,4 +1,67 @@
-# HANDS ON — Sistema Inteligente de Atendimento com Filas
+# Sistema Inteligente de Atendimento com Filas
+
+Simulação de um sistema de atendimento utilizando fila clássica (FIFO), fila circular e fila de prioridade em Python, com comparação entre as estruturas.
+
+## Integrantes
+
+- Danilo Tavares Lima — 43440924
+
+## Como executar
+
+Pré-requisitos: Python 3.x instalado (não há dependências externas — apenas biblioteca padrão).
+
+```bash
+git clone https://github.com/danilotavares-dev/fila-atendimento-hands-on.git
+cd fila-atendimento-hands-on
+python filas.py
+```
+
+## Estrutura do repositório
+
+```
+fila-atendimento-hands-on/
+├── filas.py
+├── assets/
+└── README.md
+```
+
+## Explicação das implementações
+
+### Parte 1 — Fila Clássica (FIFO)
+A classe FilaClassica foi implementada utilizando a estrutura deque da biblioteca collections do Python. Isso garante complexidade de tempo O(1) nas operações de inserção (enqueue com append) e remoção (dequeue com popleft), tornando a estrutura altamente eficiente comparada a uma lista tradicional.
+
+### Parte 2 — Fila Circular
+A classe FilaCircular foi desenvolvida utilizando um array estático de tamanho fixo (5 posições). O controle das posições é feito pelos índices front e rear utilizando aritmética modular (ex: (self.rear + 1) % self.capacidade). Isso permite que, ao remover elementos do início, o índice rear dê a volta no array e reaproveite os espaços liberados, evitando desperdício de memória.
+
+### Parte 3 — Fila de Prioridade
+Implementada com o módulo heapq. Para garantir o critério de desempate (ordem de chegada para clientes com a mesma prioridade), os elementos foram armazenados em uma tupla estruturada como (prioridade, contador, cliente). O contador é incrementado manualmente a cada inserção, garantindo a estabilidade da fila sem erros de comparação de objetos.
+
+## Desafio Final — Simulação com 20 clientes
+O script principal gera automaticamente 20 instâncias da classe Cliente, atribuindo nomes e prioridades aleatórias (de 1 a 3). Em seguida, esses mesmos 20 clientes são processados sequencialmente pelas três estruturas construídas para demonstrar, na prática, a diferença de comportamento e escalonamento entre elas.
+
+## Evidências dos testes
+
+### Clientes Gerados
+
+![Execução completa do terminal](assets/screen1.png)
+
+### Fila Clássica (FIFO)
+
+![Execução completa do terminal — parte 1](assets/screen2.png)
+
+A saída acima mostra a geração dos 20 clientes e o início do teste da fila clássica (visível também na screenshot seguinte). A ordem de atendimento é idêntica à ordem de chegada.
+
+### Fila Circular
+
+![Execução completa do terminal — parte 2](assets/screen2.png)
+
+Esta captura mostra a continuação da fila clássica e o teste completo da fila circular. Após a remoção de Alice e Bruno, as posições 0 e 1 são reaproveitadas por Fabio e Gisele.
+
+### Fila de Prioridade
+
+![Execução completa do terminal — parte 3](assets/screen3.png)
+
+A captura final mostra o teste completo da fila de prioridade, com os clientes agrupados por prioridade (1 → 2 → 3).
 
 ## Perguntas e Respostas
 
