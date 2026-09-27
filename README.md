@@ -1,4 +1,4 @@
-# Sistema Inteligente de Atendimento com Filas
+# Sistema de Atendimento com Filas
 
 Simulação de um sistema de atendimento utilizando fila clássica (FIFO), fila circular e fila de prioridade em Python, com comparação entre as estruturas.
 
